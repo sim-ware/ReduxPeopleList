@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
-// import NameList from '../src/NameList';
+import NameList from '../NameList';
 
 
 export default class HomeScreen extends React.Component {
@@ -12,6 +12,7 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Changes you make will automatically reload.</Text>
+        <NameList />
         <Button
           title="Go to Details"
           onPress={() => this.props.navigation.navigate('Details')}
