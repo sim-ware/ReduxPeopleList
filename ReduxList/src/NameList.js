@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import ListItem from './ListItem'
-const myModule = require('./Firebase');
+// const myModule = require('./Firebase');
 
 
 function mapStateToProps(state) {
@@ -14,18 +14,9 @@ function mapStateToProps(state) {
 class NameList extends Component {
    constructor() {
      super();
-     this.state = {
-       data: []
-     };
-     this.componentDidMount = this.componentDidMount.bind(this);
-   }
-
-   componentDidMount() {
-    const db = myModule.db;
-    db.collection('people').get().then(collection => {
-      const data = collection.docs.map(doc => doc.data().name)
-      this.setState({ data });
-    });
+     // this.state = {
+     //   data: []
+     // };
    }
 
    render() {
