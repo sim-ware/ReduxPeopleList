@@ -9,7 +9,7 @@ function reducer() {
   // just gonna leave this blank for now
   // which is the same as `return undefined;`
   return {
-    data: [1,2,3,4,5,42]
+    data: ['John', 'Paul', 'Luke', 'John']
   };
 }
 

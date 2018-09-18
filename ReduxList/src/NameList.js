@@ -29,8 +29,6 @@ class NameList extends Component {
    }
 
    render() {
-     console.log('NameList');
-     console.log(this.props.data);
       return (
         <View style = {styles.item}>
           <FlatList

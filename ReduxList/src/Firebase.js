@@ -15,3 +15,16 @@ db.settings({
 });
 
 exports.db = db;
+
+//
+// Should Create a Variable for the List of NameList
+// And find a way for avoiding setting State
+
+db.collection('people').get().then(collection => {
+  const data = collection.docs.map(doc => doc.data().name)
+  console.log(data);
+  // see this ^^^^ variable - I want to keep it 
+});
+
+
+// ReUsable Functions for Dynamic DB calls
