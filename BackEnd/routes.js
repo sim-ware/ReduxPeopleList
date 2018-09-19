@@ -37,6 +37,11 @@ router.get('/', function (req, res, next) {
   return res.send('Hello World');
 });
 
+router.get('/:id', function (req, res, next) {
+  const id = req.params.id;
+  return res.send(String(id));
+});
+
 // router.get('/', async (req, res, next) => {
 //     try {
 //         const noteSnapshot = await db.collection('notes').get();
