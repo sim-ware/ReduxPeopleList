@@ -37,10 +37,10 @@ db.collection('people').where("name", "==", name).get().then(collection => {
 //   return res.send('Hello World');
 // });
 
-router.get('/:id', function (req, res, next) {
-  const id = req.params.id;
-  return res.send(String(id));
-});
+// router.get('/:id', function (req, res, next) {
+//   const id = req.params.id;
+//   return res.send(String(id));
+// });
 
 router.get('/', async (req, res, next) => {
     try {
@@ -59,21 +59,23 @@ router.get('/', async (req, res, next) => {
 });
 
 
-// router.get('/:id', async(req, res, next) => {
-//     try {
-//         const id = req.params.id;
-//         if (!id) throw new Error('id is blank');
-//         const note = await db.collection('notes').doc(id).get();
-//         if (!note.exists) {
-//             throw new Error('note does not exists');
-//         }
-//         res.json({
-//             id: note.id,
-//             data: note.data()
-//         });
-//     } catch(e) {
-//         next(e);
-//     }
-// })
+router.get('/:id', async(req, res, next) => {
+    try {
+        const id = req.params.id;
+        if (!id) throw new Error('id is blank');
+        const person = await db.collection('people').doc(id).get();
+        if (!person.exists) {
+            throw new Error('person does not exists');
+        }
+        res.json({
+            id: person.id,
+            name: person.data().name,
+            rating: person.data().rating,
+            birthday: person.data().birthday
+        });
+    } catch(e) {
+        next(e);
+    }
+})
 
 module.exports = router
