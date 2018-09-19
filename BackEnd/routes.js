@@ -33,31 +33,32 @@ db.collection('people').where("name", "==", name).get().then(collection => {
   console.log(birthday);
 });
 
-router.get('/', function (req, res, next) {
-  return res.send('Hello World');
-});
+// router.get('/', function (req, res, next) {
+//   return res.send('Hello World');
+// });
 
 router.get('/:id', function (req, res, next) {
   const id = req.params.id;
   return res.send(String(id));
 });
 
-// router.get('/', async (req, res, next) => {
-//     try {
-//         const noteSnapshot = await db.collection('notes').get();
-//         const notes = [];
-//         noteSnapshot.forEach((doc) => {
-//             notes.push({
-//                 id: doc.id,
-//                 data: doc.data()
-//             });
-//         });
-//         res.json(notes);
-//     } catch(e) {
-//         next(e);
-//     }
-// });
-//
+router.get('/', async (req, res, next) => {
+    try {
+        const peopleSnapshot = await db.collection('people').get();
+        const people = [];
+        peopleSnapshot.forEach((doc) => {
+            people.push({
+                id: doc.id,
+                name: doc.data().name
+            });
+        });
+        res.json(people);
+    } catch(e) {
+        next(e);
+    }
+});
+
+
 // router.get('/:id', async(req, res, next) => {
 //     try {
 //         const id = req.params.id;
