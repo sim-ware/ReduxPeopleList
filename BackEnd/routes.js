@@ -1,10 +1,8 @@
-var express = require('express')
+const express = require('express')
 const router = express.Router()
+const admin = require("firebase-admin");
+const serviceAccount = require("./serviceAccountKey.json");
 
-
-var admin = require("firebase-admin");
-
-var serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -16,31 +14,6 @@ const db = admin.firestore();
 db.settings({
   timestampsInSnapshots: true
 });
-
-db.collection('people').get().then(collection => {
-  const data = collection.docs.map(doc => doc.data().name)
-  // this.setState({ data });
-  console.log(data);
-});
-
-let name = "Zinedine Zidane"
-db.collection('people').where("name", "==", name).get().then(collection => {
-  const name = collection.docs.map(doc => doc.data().name)
-  const rating = collection.docs.map(doc => doc.data().rating)
-  const birthday = collection.docs.map(doc => doc.data().birthday)
-  console.log(name);
-  console.log(rating);
-  console.log(birthday);
-});
-
-// router.get('/', function (req, res, next) {
-//   return res.send('Hello World');
-// });
-
-// router.get('/:id', function (req, res, next) {
-//   const id = req.params.id;
-//   return res.send(String(id));
-// });
 
 router.get('/', async (req, res, next) => {
     try {
