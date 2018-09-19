@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 const myModule = require('../Firebase');
 const data = myModule.data;
-console.log('HomeScreen');
-console.log(data);
+// console.log('HomeScreen');
+// console.log(data);
 
 function reducer() {
   //TODO: Find a way of calling the Firebase NameList Here
