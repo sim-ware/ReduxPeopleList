@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import ListItem from './ListItem'
-// const myModule = require('./Firebase');
 
 
 function mapStateToProps(state) {
@@ -14,9 +13,6 @@ function mapStateToProps(state) {
 class NameList extends Component {
    constructor() {
      super();
-     // this.state = {
-     //   data: []
-     // };
    }
 
    render() {
