@@ -1,18 +1,12 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
-import NameList from '../NameList';
+import NameList from '../containers/NameList';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import reducers from '../reducers';
+console.log(reducers);
 
-
-function reducer() {
-  //TODO: Find a way of calling the Firebase NameList Here
-  return {
-    data: ['John', 'Paul', 'Luke', 'John']
-  };
-}
-
-const store = createStore(reducer);
+const store = createStore(reducers);
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {

@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
-import ListItem from './ListItem'
+import ListItem from '../components/ListItem'
 
 
 function mapStateToProps(state) {
   return {
-    data: state.data
+    names: state.names
   };
 }
 
 class NameList extends Component {
-   constructor() {
-     super();
-   }
-
    render() {
       return (
         <View style = {styles.item}>
           <FlatList
-            data={this.props.data}
+            data={this.props.names}
             renderItem={({item}) => <ListItem name={String(item)} />}
             keyExtractor={(item, index) => index.toString()}
           />
