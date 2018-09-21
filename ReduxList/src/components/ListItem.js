@@ -30,5 +30,15 @@ const styles = StyleSheet.create ({
    }
 })
 
+// const ListItem = ({name}) => {
+//   return (
+//          <View style = {styles.item}>
+//             <Button style = {styles.button}
+//               title={name}
+//               onPress={() => {this.props.navigation.navigate('Details', {otherParam: name});}}
+//             />
+//          </View>
+//        )
+// }
 
 export default withNavigation(ListItem);
