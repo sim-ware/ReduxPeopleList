@@ -1,13 +1,15 @@
 import React from 'react';
-import { Button, View, Text } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import HomeScreen from './src/screens/HomeScreen';
 import DetailsScreen from './src/screens/DetailScreen';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducers from './src/reducers';
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from './src/reducers';
+import thunk from 'redux-thunk';
 
-const store = createStore(reducers);
+// const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
 
 const RootStack = createStackNavigator(
   {

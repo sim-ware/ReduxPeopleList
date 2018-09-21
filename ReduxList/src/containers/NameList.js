@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FlatList, StyleSheet, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import ListItem from '../components/ListItem'
-import axios from 'axios';
 import { getNames } from '../actions/index';
 // import * as actions from '../actions/index';
 import { bindActionCreators } from 'redux';
@@ -12,15 +11,10 @@ class NameList extends Component {
 
    componentDidMount() {
      console.log('componentDidMount');
-     axios.get('https://nameless-meadow-83372.herokuapp.com/people/')
-       .then(function(result){
-         console.log(result.data);
-         // YourAction.getAllFlights(result)
-         // getNames(result.data);
-         console.log('1.');
-         console.log(this.props.getNames);
-         this.props.getNames(result.data);
-     });
+     console.log(this.props);
+     this.props.getNames();
+     // getNames()
+
    }
 
    render() {

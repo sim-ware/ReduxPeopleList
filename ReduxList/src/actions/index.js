@@ -1,13 +1,39 @@
-export function getNames(data) {
-  console.log('in getNames');
-  console.log(data);
-  // selectBook is an ActionCreator, it needs to return an Action,
-  // an object with a Type Property.
-  // Actions usually have 2 values - a type, and a payload
-  // Type describes the purpose of the Action. Usually a String, always
-  // UpperCase.
-  return {
-    type: 'GET_NAMES',
-    payload: data
+import axios from 'axios';
+
+
+export function getNames() {
+  console.log('In getNames');
+  // return (dispatch, getState) => {
+  //   // perform API call
+  //   axios.get('https://nameless-meadow-83372.herokuapp.com/people/')
+  //     .then(response => {
+  //       // now that you have the response, you can dispatch the action
+  //       console.log(response.data);
+  //       dispatch({
+  //         type: GET_NAMES,
+  //         payload: response.data
+  //       });
+  //     });
+  // };
+  return async dispatch => {
+    // dispatch({ type: 'GET_NAMES' });
+    try {
+      const res = await axios ('https://nameless-meadow-83372.herokuapp.com/people/');
+      dispatch({ type: 'GET_NAMES', payload: res.data });
+    } catch (error) {
+      console.log(error);
+    }
   };
-}
+};
+
+// export const fetchAllCandidates = () => {
+//    return async dispatch => {
+//       dispatch({ type: FETCHING_CANDIDATES });
+//       try {
+//          const res = await axios ('https://quiet-depths-97179.herokuapp.com/api/candidates');
+//          dispatch({ type: CANDIDATES_FETCH_SUCCESS, payload: res.data.candidateNames });
+//       } catch (error) {
+//          console.log(error);
+//       }
+//    };
+// };

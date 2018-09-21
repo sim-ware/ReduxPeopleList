@@ -14,7 +14,6 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <Provider store={store}>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Changes you make will automatically reload.</Text>
         <NameList />
@@ -23,7 +22,6 @@ export default class HomeScreen extends React.Component {
           onPress={() => this.props.navigation.navigate('Details')}
         />
       </View>
-      </Provider>
     );
   }
 }
