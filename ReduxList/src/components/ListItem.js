@@ -11,7 +11,6 @@ class ListItem extends Component {
                   title={this.props.name}
                   onPress={() => {
                     this.props.navigation.navigate('Details', {
-                      itemId: 95,
                       otherParam: this.props.name,
                     });
                   }}
