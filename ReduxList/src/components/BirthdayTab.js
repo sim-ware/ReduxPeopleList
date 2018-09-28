@@ -3,16 +3,12 @@ import { Text, Button, View, StyleSheet} from 'react-native';
 import { Card } from 'react-native-elements';
 
 
-class BirthdayTab extends Component {
-
-
-   render() {
-      return (
-             <View style = {styles.item}>
-                <Text>{this.props.birthday}</Text>
-             </View>
-      );
-   }
+const BirthdayTab = ({birthday}) => {
+  return (
+         <View style = {styles.item}>
+            <Text>{birthday}</Text>
+         </View>
+       );
 }
 
 const styles = StyleSheet.create ({

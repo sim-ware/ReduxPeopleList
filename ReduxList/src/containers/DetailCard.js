@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getRecord } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import { withNavigation } from 'react-navigation';
-import RatingCounter from './RatingCounter';
+import RatingCounter from '../components/RatingCounter';
 import BirthdayTab from '../components/BirthdayTab';
 
 class DetailCard extends Component {

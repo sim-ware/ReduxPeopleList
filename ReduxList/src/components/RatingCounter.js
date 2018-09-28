@@ -27,25 +27,21 @@ class RatingCounter extends Component {
       return (
              <View style = {styles.item}>
                 <Button onPress={this.increment} title="+"></Button>
-                <Text>{this.state.count}</Text>
+                <Text style={styles.text}>{this.state.count}</Text>
                 <Button onPress={this.decrement} title="-"></Button>
              </View>
       );
    }
 }
 
-function mapStateToProps(state) {
-  return {
-    count: state.count
-  };
-}
-
 const styles = StyleSheet.create ({
    item: {
       paddingHorizontal: 50,
-      margin: 2,
+   },
+   text:{
+     textAlign: 'center',
    }
 })
 
 
-export default connect(mapStateToProps)(RatingCounter);
+export default RatingCounter;
