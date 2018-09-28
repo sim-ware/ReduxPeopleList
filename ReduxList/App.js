@@ -7,9 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './src/reducers';
 import thunk from 'redux-thunk';
 
-// const store = createStore(rootReducer);
 const store = createStore(rootReducer, applyMiddleware(thunk));
-
 
 const RootStack = createStackNavigator(
   {
@@ -24,6 +22,10 @@ const RootStack = createStackNavigator(
 
 export default class App extends React.Component {
   render() {
-    return <Provider store={store}><RootStack /></Provider>;
+    return (
+      <Provider store={store}>
+        <RootStack />
+      </Provider>
+    );
   }
 }
