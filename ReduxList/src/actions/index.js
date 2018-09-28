@@ -22,6 +22,7 @@ export function getRecord(name) {
   return async dispatch => {
     try {
       const res = await axios (url+iD);
+      console.log("res data", res);
       dispatch({ type: 'GET_RECORD', payload: res.data });
     } catch (error) {
       console.log(error);
@@ -29,17 +30,18 @@ export function getRecord(name) {
   };
 };
 
+
 export function updateRating(rating, id) {
   console.log('In updateRating');
-  console.log(rating);
-  console.log(id);
-  let nRat = parseInt(rating);
   const db = myModule.db;
-  db.collection("people").doc(String(id)).update({
-    "rating": nRat
-  })
-  // this.setState({editMode:false});
-  // name = String(this.props.name);
-  // let key = name.substr(0,1).toLowerCase().charCodeAt(0) - 96;
-  // String(key).length == 1 ? key='0'+key : key=key
+  return async dispatch => {
+    try {
+      const res = await db.collection("people").doc(String(id)).update({
+        "rating": parseInt(rating)
+      });
+      dispatch({ type: 'GET_RECORD', payload: res.data });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

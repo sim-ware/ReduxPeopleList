@@ -3,13 +3,12 @@ import { Text, Button, View, StyleSheet} from 'react-native';
 import EditMode from './EditMode';
 import { updateRating } from '../actions/index';
 import { connect } from 'react-redux';
-// import { getRecord } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 
 class RatingCounter extends Component {
    state = {   count: this.props.rating,
-            editMode: false              }
+            editMode: false }
 
 
    increment = () => {
@@ -32,21 +31,34 @@ class RatingCounter extends Component {
 
    leaveEditMode = () => {
      this.setState({
-       editMode: false
+       editMode: false,
+       count: this.props.rating,
      });
+
+     // this.setState({
+     //   count:
+     // });
    }
 
    saveRating = () => {
      console.log('SaveRating');
-     console.log(this.state.count);
-     console.log(this.props["record"]["id"]);
      this.props.updateRating(this.state.count, this.props["record"]["id"]);
      // Call to action Here!
      // UserAction -> ActionCreator -> Action -> Reducer
-   }
+     // Return an action that confirms the save?
+     this.setState({editMode:false});
+     console.log(this.state.count);
+     console.log(this.props.rating);
+     if (this.state.count !== this.props.rating) {
 
+     }
+     // this.setState({editMode:false});
+     // only if number in state is different to props, then overwrite props number
+     // with state number
+
+   }
    render() {
-      const editButton = <View><Text>Rating: {this.props.rating}</Text><Button onPress={() => this.enterEditMode()} title="edit" /></View>;
+      const editButton = <View><Text>Rating: {this.props.rating !== this.state.count ? this.state.count : this.props.record.rating }</Text><Button onPress={() => this.enterEditMode()} title="edit" /></View>;
       const editMode = <View style = {styles.editMode}><Text>Rating: {this.state.count}</Text><Button onPress={this.increment} title="+"></Button><Button onPress={this.decrement} title="-"></Button><Button onPress={() => this.leaveEditMode()} title="cancel" /><Button onPress={() => this.saveRating()} title="save" /></View>;
 
       return (
@@ -78,5 +90,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps) (RatingCounter);
-
-// export default RatingCounter;

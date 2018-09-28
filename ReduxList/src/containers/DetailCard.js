@@ -10,7 +10,7 @@ import BirthdayTab from '../components/BirthdayTab';
 
 class DetailCard extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
       this.props.getRecord(this.props.name);
   }
 
