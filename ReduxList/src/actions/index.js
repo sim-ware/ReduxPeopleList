@@ -34,3 +34,13 @@ export function getRecord(name) {
     }
   };
 };
+
+
+export function increment() {
+
+}
+
+
+export function decrement() {
+
+}

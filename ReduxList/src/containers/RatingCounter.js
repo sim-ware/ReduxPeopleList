@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet} from 'react-native';
+import { Text, Button, View, StyleSheet} from 'react-native';
 import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { getRecord } from '../actions/index';
@@ -8,14 +8,36 @@ import { withNavigation } from 'react-navigation';
 
 
 class RatingCounter extends Component {
+   state = { count: this.props.rating }
+
+
+   increment = () => {
+     this.setState({
+       count: this.state.count + 1
+     });
+   }
+
+   decrement = () => {
+     this.setState({
+       count: this.state.count - 1
+     });
+   }
 
    render() {
       return (
              <View style = {styles.item}>
-                <Text>{this.props.rating}</Text>
+                <Button onPress={this.increment} title="+"></Button>
+                <Text>{this.state.count}</Text>
+                <Button onPress={this.decrement} title="-"></Button>
              </View>
       );
    }
+}
+
+function mapStateToProps(state) {
+  return {
+    count: state.count
+  };
 }
 
 const styles = StyleSheet.create ({
@@ -26,4 +48,4 @@ const styles = StyleSheet.create ({
 })
 
 
-export default RatingCounter;
+export default connect(mapStateToProps)(RatingCounter);
