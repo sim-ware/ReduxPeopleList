@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { getRecord } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import { withNavigation } from 'react-navigation';
+import RatingCounter from './RatingCounter';
+import BirthdayTab from '../components/BirthdayTab';
 
 class DetailCard extends Component {
 
@@ -19,8 +21,8 @@ class DetailCard extends Component {
       return (
              <View style = {styles.item}>
                <Card title={this.props.name}>
-                <Text>{this.props.record.birthday}</Text>
-                <Text>{this.props.record.rating}</Text>
+                <BirthdayTab birthday={this.props.record.birthday} />
+                <RatingCounter rating={this.props.record.rating} />
                </Card>
              </View>
       )
