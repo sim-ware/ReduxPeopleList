@@ -3,22 +3,22 @@ import { Button, View, StyleSheet} from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 
-class ListItem extends Component {
-   render() {
-      return (
-             <View style = {styles.item}>
-                <Button style = {styles.button}
-                  title={this.props.name}
-                  onPress={() => {
-                    this.props.navigation.navigate('Details', {
-                      otherParam: this.props.name,
-                    });
-                  }}
-                />
-             </View>
-      )
-   }
-}
+// class ListItem extends Component {
+//    render() {
+//       return (
+//              <View style = {styles.item}>
+//                 <Button style = {styles.button}
+//                   title={this.props.name}
+//                   onPress={() => {
+//                     this.props.navigation.navigate('Details', {
+//                       otherParam: this.props.name,
+//                     });
+//                   }}
+//                 />
+//              </View>
+//       )
+//    }
+// }
 
 const styles = StyleSheet.create ({
    item: {
@@ -30,15 +30,15 @@ const styles = StyleSheet.create ({
    }
 })
 
-// const ListItem = ({name}) => {
-//   return (
-//          <View style = {styles.item}>
-//             <Button style = {styles.button}
-//               title={name}
-//               onPress={() => {this.props.navigation.navigate('Details', {otherParam: name});}}
-//             />
-//          </View>
-//        )
-// }
+const ListItem = ({name, navigation}) => {
+  return (
+         <View style = {styles.item}>
+            <Button style = {styles.button}
+              title={name}
+              onPress={() => {navigation.navigate('Details', {otherParam: name});}}
+            />
+         </View>
+       )
+}
 
 export default withNavigation(ListItem);
