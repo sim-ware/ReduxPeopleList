@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { Text, Button, View, StyleSheet} from 'react-native';
 import { Card } from 'react-native-elements';
-import { connect } from 'react-redux';
-import { getRecord } from '../actions/index';
-import { bindActionCreators } from 'redux';
-import { withNavigation } from 'react-navigation';
 
 
 class RatingCounter extends Component {
