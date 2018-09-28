@@ -22,7 +22,7 @@ class DetailCard extends Component {
              <View style = {styles.item}>
                <Card title={this.props.name}>
                 <BirthdayTab birthday={this.props.record.birthday} />
-                <RatingCounter rating={this.props.record.rating} />
+                <RatingCounter rating={this.props.record.rating} id={this.props.id}/>
                </Card>
              </View>
       )
