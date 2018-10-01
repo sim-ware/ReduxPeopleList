@@ -1,14 +1,19 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Button, View, Text } from 'react-native';
 import DetailCard from '../containers/DetailCard';
+//
+import { resetState } from '../actions/index';
+//
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 
 export default class DetailsScreen extends React.Component {
   static navigationOptions = {
     title: 'Detail View',
   };
+
   render() {
-    /* 2. Get the param, provide a fallback value if not available */
     const { navigation } = this.props;
     const otherParam = navigation.getParam('otherParam', 'some default value');
 
@@ -18,4 +23,14 @@ export default class DetailsScreen extends React.Component {
       </View>
     );
   }
+}
+
+function mapStateToProps(state) {
+  return {
+    record: state.record
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ resetState: resetState }, dispatch)
 }

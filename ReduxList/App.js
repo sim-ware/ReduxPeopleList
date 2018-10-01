@@ -6,8 +6,12 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './src/reducers';
 import thunk from 'redux-thunk';
+import { HeaderBackButton } from 'react-navigation';
+
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
+
+console.log('STORE', store);
 
 const RootStack = createStackNavigator(
   {

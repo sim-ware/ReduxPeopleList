@@ -45,3 +45,18 @@ export function updateRating(rating, id) {
     }
   }
 }
+
+
+export function resetState() {
+  console.log('In resetState');
+  // console.log('dispatch', dispatch);
+  return async dispatch => {
+    try {
+      dispatch({ type: 'RESET_STATE'});
+      console.log("HIT");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+   // dispatch({ type: 'RESET_STATE'})
+};

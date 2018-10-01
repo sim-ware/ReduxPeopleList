@@ -34,10 +34,6 @@ class RatingCounter extends Component {
        editMode: false,
        count: this.props.rating,
      });
-
-     // this.setState({
-     //   count:
-     // });
    }
 
    saveRating = () => {
@@ -50,12 +46,7 @@ class RatingCounter extends Component {
      console.log(this.state.count);
      console.log(this.props.rating);
      if (this.state.count !== this.props.rating) {
-
      }
-     // this.setState({editMode:false});
-     // only if number in state is different to props, then overwrite props number
-     // with state number
-
    }
    render() {
       const editButton = <View><Text>Rating: {this.props.rating !== this.state.count ? this.state.count : this.props.record.rating }</Text><Button onPress={() => this.enterEditMode()} title="edit" /></View>;
