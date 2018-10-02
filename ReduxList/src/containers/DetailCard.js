@@ -9,15 +9,40 @@ import RatingCounter from '../components/RatingCounter';
 import BirthdayTab from '../components/BirthdayTab';
 
 class DetailCard extends Component {
+  // constructor() {
+  //   super();
+  //   // this.state = {
+  //   //   name: '',
+  //   //   rating: 0
+  //   // };
+  //   this.update = this.update.bind(this);
+  // }
+  constructor(props) {
+    super(props);
+    this.update = this.update.bind(this);
+  }
 
   componentWillMount() {
       this.props.getRecord(this.props.name);
   }
 
   reset() {
-    // Can I reset the Store Here Somehow?!
+    // Can I reset the Store Here Somehow?
     this.props.resetState()
     this.props.navigation.navigate('Home')
+  }
+
+  update() {
+    console.log('updating!');
+    console.log('---------');
+    console.log('updating!');
+    console.log('---------');
+    console.log('updating!');
+    console.log('---------');
+    console.log('updating!');
+    console.log('---------');
+    console.log('updating!');
+    console.log('---------');
   }
 
    render() {
@@ -28,7 +53,7 @@ class DetailCard extends Component {
              <View style = {styles.item}>
                <Card title={this.props.name}>
                 <BirthdayTab birthday={this.props.record.birthday} />
-                <RatingCounter rating={this.props.record.rating} id={this.props.id}/>
+                <RatingCounter callBack={() => this.update()} rating={this.props.record.rating} id={this.props.id}/>
                 <Button
                   title="Go to People List"
                   onPress={() => this.reset()}
@@ -54,7 +79,6 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  // return bindActionCreators({ getRecord: getRecord }, dispatch)
   return {
     getRecord : bindActionCreators(getRecord, dispatch),
     resetState : bindActionCreators(resetState, dispatch)

@@ -22,7 +22,6 @@ export function getRecord(name) {
   return async dispatch => {
     try {
       const res = await axios (url+iD);
-      console.log("res data", res);
       dispatch({ type: 'GET_RECORD', payload: res.data });
     } catch (error) {
       console.log(error);
