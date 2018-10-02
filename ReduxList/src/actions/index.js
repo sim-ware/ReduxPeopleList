@@ -7,7 +7,7 @@ export function getNames() {
       const res = await axios ('https://nameless-meadow-83372.herokuapp.com/people/');
       dispatch({ type: 'GET_NAMES', payload: res.data });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 };
@@ -24,7 +24,7 @@ export function getRecord(name) {
       const res = await axios (url+iD);
       dispatch({ type: 'GET_RECORD', payload: res.data });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 };
@@ -40,7 +40,7 @@ export function updateRating(rating, id) {
       });
       dispatch({ type: 'GET_RECORD', payload: res.data });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 }
@@ -54,7 +54,7 @@ export function resetState() {
       dispatch({ type: 'RESET_STATE'});
       console.log("HIT");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
    // dispatch({ type: 'RESET_STATE'})

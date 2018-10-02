@@ -42,9 +42,9 @@ class RatingCounter extends Component {
      });
    }
 
-   saveRating = () => {
+   async saveRating() {
      console.log('SaveRating');
-     this.props.updateRating(this.props.rating + this.state.count, this.props["record"]["id"]);
+     let yes = await this.props.updateRating(this.props.rating + this.state.count, this.props["record"]["id"]);
      this.setState({
        editMode:false,
        count:0,

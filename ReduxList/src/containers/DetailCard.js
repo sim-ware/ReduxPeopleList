@@ -32,19 +32,17 @@ class DetailCard extends Component {
     this.props.navigation.navigate('Home')
   }
 
-  update() {
-    console.log('updating!');
-    console.log('---------');
-    console.log('updating!');
-    console.log('---------');
-    console.log('updating!');
-    console.log('---------');
-    console.log('updating!');
+  async update() {
     console.log('---------');
     console.log('updating!');
     console.log('---------');
     // CAN I SOMEHOW GET THIS COMPONENT
     // TO RECALL RECORD AND RE-RENDER HERE?
+    // let result = await this.setState({ state: this.state });
+    // let result = await this.forceUpdate()
+    let result = await this.componentWillMount();
+    // let result = await this.props.getRecord(this.props.name);
+    console.log(this.props.record.rating);
   }
 
    render() {
