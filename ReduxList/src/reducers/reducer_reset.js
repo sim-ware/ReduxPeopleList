@@ -4,12 +4,12 @@
 // responsible for.
 export default function resetState(state=null, action) {
   console.log('in reducer resetState');
-  console.log(action);
+  console.log(action.type);
   switch(action.type) {
   case 'RESET_STATE':
-    console.log(state);
+    console.log('state', state);
     return state;
   }
-  console.log(state);
+  console.log('state', state);
   return state;
 }

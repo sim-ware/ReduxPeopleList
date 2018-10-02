@@ -32,7 +32,7 @@ export function getRecord(name) {
 
 
 export function updateRating(rating, id) {
-  console.log('In updateRating');
+  // console.log('In updateRating');
   const db = myModule.db;
   return async dispatch => {
     try {

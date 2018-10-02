@@ -7,9 +7,15 @@ import { bindActionCreators } from 'redux';
 
 
 class RatingCounter extends Component {
-   state = {   count: this.props.rating,
+   state = {   count: 0,
             editMode: false }
 
+
+   componentDidMount() {
+     this.setState({
+       count: 0
+     })
+   }
 
    increment = () => {
      this.setState({
@@ -32,25 +38,27 @@ class RatingCounter extends Component {
    leaveEditMode = () => {
      this.setState({
        editMode: false,
-       count: this.props.rating,
+       count: 0,
      });
    }
 
+   // FIND A WAY, SO THAT WHEN I SAVE IT, IT SHOWS THE NEWLY RENDERED NUMBER
+
    saveRating = () => {
      console.log('SaveRating');
-     this.props.updateRating(this.state.count, this.props["record"]["id"]);
-     // Call to action Here!
-     // UserAction -> ActionCreator -> Action -> Reducer
-     // Return an action that confirms the save?
-     this.setState({editMode:false});
-     console.log(this.state.count);
-     console.log(this.props.rating);
-     if (this.state.count !== this.props.rating) {
-     }
+     this.props.updateRating(this.props.rating + this.state.count, this.props["record"]["id"]);
+     this.setState({
+       editMode:false,
+     });
+     this.forceUpdate()
    }
+
    render() {
-      const editButton = <View><Text>Rating: {this.props.rating !== this.state.count ? this.state.count : this.props.record.rating }</Text><Button onPress={() => this.enterEditMode()} title="edit" /></View>;
-      const editMode = <View style = {styles.editMode}><Text>Rating: {this.state.count}</Text><Button onPress={this.increment} title="+"></Button><Button onPress={this.decrement} title="-"></Button><Button onPress={() => this.leaveEditMode()} title="cancel" /><Button onPress={() => this.saveRating()} title="save" /></View>;
+      console.log('this.props.rating', this.props.rating);
+      console.log('this.state.count', this.state.count);
+      console.log('this.props.record.rating', this.props.record.rating);
+      const editButton = <View><Text>Rating: {this.props.rating}</Text><Button onPress={() => this.enterEditMode()} title="edit" /></View>;
+      const editMode = <View style = {styles.editMode}><Text>Rating: {this.props.rating + this.state.count}</Text><Button onPress={this.increment} title="+"></Button><Button onPress={this.decrement} title="-"></Button><Button onPress={() => this.leaveEditMode()} title="cancel" /><Button onPress={() => this.saveRating()} title="save" /></View>;
 
       return (
              <View style = {styles.item}>

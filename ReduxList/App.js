@@ -11,7 +11,7 @@ import { HeaderBackButton } from 'react-navigation';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-console.log('STORE', store);
+// console.log('STORE', store);
 
 const RootStack = createStackNavigator(
   {
