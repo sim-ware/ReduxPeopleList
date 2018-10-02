@@ -9,9 +9,12 @@ import thunk from 'redux-thunk';
 import { HeaderBackButton } from 'react-navigation';
 
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+// const store = createStore(rootReducer, applyMiddleware(thunk));
 
-// console.log('STORE', store);
+//
+let createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
+let store = createStoreWithMiddleware( rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+//
 
 const RootStack = createStackNavigator(
   {
