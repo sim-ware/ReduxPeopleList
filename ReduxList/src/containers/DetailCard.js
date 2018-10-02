@@ -43,6 +43,8 @@ class DetailCard extends Component {
     console.log('---------');
     console.log('updating!');
     console.log('---------');
+    // CAN I SOMEHOW GET THIS COMPONENT
+    // TO RECALL RECORD AND RE-RENDER HERE?
   }
 
    render() {
